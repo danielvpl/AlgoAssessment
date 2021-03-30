@@ -1,3 +1,5 @@
+using System;
+
 namespace TGS.Challenge
 {
   /*
@@ -24,7 +26,22 @@ namespace TGS.Challenge
     {
       public bool AreAnagrams(string word1, string word2)
       {
-        return false;
-      }
+            if (string.IsNullOrEmpty(word1) || string.IsNullOrEmpty(word2))
+                throw new ArgumentException();
+
+            if (word1.Length != word2.Length)
+                return false;
+
+            var s1Array = word1.ToLower().ToCharArray();
+            var s2Array = word2.ToLower().ToCharArray();
+
+            Array.Sort(s1Array);
+            Array.Sort(s2Array);
+
+            word1 = new string(s1Array);
+            word2 = new string(s2Array);
+
+            return word1 == word2;
+      }    
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace TGS.Challenge
 {
@@ -26,7 +27,17 @@ namespace TGS.Challenge
     {
         public string Format(int value)
         {
-            return string.Empty;
+            if (value < 0 || value > 1000000000)
+                throw new ArgumentOutOfRangeException();
+
+            var nFormatted = new NumberFormatInfo
+            {
+                NumberGroupSeparator = ",",
+                NumberGroupSizes = new int[] { 3 },
+                NumberDecimalDigits = 0
+            };            
+
+            return value.ToString("N", nFormatted);
         }
     }
 }

@@ -19,7 +19,36 @@ namespace TGS.Challenge
     {
       public int Find(int[] numbers)
       {
-        return -99;
+            int totalLeft = 0;
+            int totalRight = 0;
+            bool incTotalRight = true;
+            int idxRight = numbers.Length - 1;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                totalLeft += numbers[i];
+                if(incTotalRight)
+                    totalRight += numbers[idxRight--];
+                
+                if (i == idxRight-1 && totalLeft != totalRight)                
+                    return -1;
+
+                if (totalLeft < totalRight)
+                {
+                    incTotalRight = false;
+                    continue;
+                }
+                if (totalLeft > totalRight)
+                {
+                    incTotalRight = true;
+                    continue;
+                }
+                if (totalLeft == totalRight)
+                    return i+1;
+                
+            }
+
+            return -1;
       }
     }
 }

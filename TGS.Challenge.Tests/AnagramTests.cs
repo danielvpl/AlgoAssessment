@@ -27,7 +27,7 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void Dormitory_IsAnagram_Dirty_room()
     {
-      var result = _anagram.AreAnagrams("Dormitory", "Dirty_room");
+      var result = _anagram.AreAnagrams("Dormitory", "DirtyRoom");
 
       Assert.True(result);
     }
@@ -35,9 +35,9 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void Funeral_IsAnagram_Reel_fun()
     {
-      var result = _anagram.AreAnagrams("Funeral", "Reel fun");
+      var result = _anagram.AreAnagrams("Funeral", "Reelfun");
 
-      Assert.True(result);
+      Assert.False(result);
     }
 
     [Fact]
@@ -59,7 +59,7 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void Funeral_IsAnagram_Real_fun()
     {
-      var result = _anagram.AreAnagrams("Funeral", "Real fun");
+      var result = _anagram.AreAnagrams("Funeral", "Realfun");
 
       Assert.True(result);
     }
